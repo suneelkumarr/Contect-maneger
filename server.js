@@ -26,14 +26,16 @@ if (process.env.NODE_ENV === 'production') {
     app.get("*", (req, res) => {
       res.sendFile('/client/build/index.html');
     });
-  } else {
-    app.use(express.static('client/build'));
+  } 
+  // else 
+  // {
+  //   app.use(express.static('client/build'));
   
-    app.get('*', (req, res) =>{
-      res.sendFile(path.resolve(__dirname, '../contect-maneger','client', 'build', 'index.html'))
-    }
-    );
-  }
+  //   app.get('*', (req, res) =>{
+  //     res.sendFile(path.resolve(__dirname, '../contect-maneger','client', 'build', 'index.html'))
+  //   }
+  //   );
+  // }
 
 app.listen(PORT,()=>{
 console.log(`Server is running on ${PORT}`.yellow.underline)
