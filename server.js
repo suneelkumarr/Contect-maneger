@@ -20,10 +20,10 @@ app.use("/api/contacts", require("./routes/contacts"));
 
 // Serve static assets in production
 if (process.env.NODE_ENV) {
-app.use(express.static(path.join(__dirname, 'client', 'build')));
+app.use(express.static('client/build'));
 app.get("*", function (req, res) {
   // res.sendFile(path.resolve('client', 'build' , 'index.html'));
-  res.sendFile(path.resolve(__dirname + '/client/build/index.html'));
+  res.sendFile(path.resolve(__dirname , "client/build", "index.html"));
 });
 }
 else
