@@ -21,10 +21,10 @@ app.use("/api/contacts", require("./routes/contacts"));
 // Serve static assets in production
 if (process.env.NODE_ENV) {
   //static folder add
-app.use(express.static('client/build'));
+app.use(express.static('app/client/build'));
 app.get("*", function (req, res) {
   // res.sendFile(path.resolve('client', 'build' , 'index.html'));
-  res.sendFile(path.resolve(__dirname , "client/build", "index.html"));
+  res.sendFile(path.resolve(__dirname , "app/client/build", "index.html"));
 });
 }
 else
