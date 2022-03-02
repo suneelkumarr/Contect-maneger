@@ -17,13 +17,12 @@ app.use("/api/users", require("./routes/users"));
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/contacts", require("./routes/contacts"));
 
-const root = path.join(__dirname, 'client', 'build')
 
 // Serve static assets in production
 if (process.env.NODE_ENV) {
-app.use(express.static(root));
+app.use(express.static(path.join(__dirname, 'client', 'build')));
 app.get("/*", function (req, res) {
-  res.sendFile(path.join('index.html', { root }));
+  res.sendFile(path.join(__dirname, 'client', 'build' , 'index.html'));
 });
 }
 else
