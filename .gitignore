@@ -1,3 +1,4 @@
 /node_modules
 
-/client/build
+/app/client/build
+/app/client/node_modules
