@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-require("dotenv");
+require("dotenv").config();
 const colors = require("colors");
 const connectDB = require("./config/db");
 const path = require("path");
@@ -17,19 +17,12 @@ app.use("/api/users", require("./routes/users"));
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/contacts", require("./routes/contacts"));
 
+
 // Serve static assets in production
 if (process.env.NODE_ENV) {
-// console.log("new build")
-//   // Set static folder
-//   app.use(express.static("client/build"));
-
-//   app.get("*", (req, res) => {
-//     res.sendFile("/client/build/index.html");
-//   });
-
-app.use(express.static("client/build"));
+app.use(express.static(path.join(__dirname, 'client', 'build')));
 app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname , 'client', 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'client', 'build' , 'index.html'));
 });
 }
 else
@@ -40,6 +33,13 @@ else
     res.sendFile(path.resolve(__dirname, "client/build/index.html"))
   }
   );
+
+  // app.use(express.static(path.join(__dirname, '..', 'build')));
+  // app.use(express.static('client'));
+  // app.get('*', (req, res) =>{
+  //   res.sendFile(path.join(__dirname, '..', 'build', 'index.html'))
+  // }
+  // );
 }
 
 app.listen(PORT, () => {
