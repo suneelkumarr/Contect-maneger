@@ -16,13 +16,14 @@ app.use(express.json({ extended: false }));
 app.use("/api/users", require("./routes/users"));
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/contacts", require("./routes/contacts"));
-
+//console.log(__dirname + '/client/build/index.html')
 
 // Serve static assets in production
 if (process.env.NODE_ENV) {
 app.use(express.static(path.join(__dirname, 'client', 'build')));
 app.get("*", function (req, res) {
-  res.sendFile(path.join('client', 'build' , 'index.html'));
+  // res.sendFile(path.resolve('client', 'build' , 'index.html'));
+  res.sendFile(__dirname + '/client/build/index.html');
 });
 }
 else
